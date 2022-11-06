@@ -1,0 +1,27 @@
+﻿@page
+@using App.Model
+@model IndexModel
+@{
+    Tabla tabla = new Tabla();
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Cod.Art</th>
+            <th scope="col">Nombre</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var item in tabla.Show())
+            {
+                <tr>
+                    <th scope="row">@item.codArt</th>
+                    <td>
+                        <a href="Detalle?CodArt=@item.codArt" style="text-decoration: none">@item.nombre</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

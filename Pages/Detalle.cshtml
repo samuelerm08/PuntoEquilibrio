@@ -1,0 +1,33 @@
+﻿@page
+@using App.Model
+@model App.Pages.DetalleModel
+@{
+    Tabla tabla = new Tabla();
+    Barbijo barbijo = tabla.ShowOne(Convert.ToInt32(Request.Query["codArt"]));
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Cod.Art</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Precio de Venta</th>
+            <th scope="col">Costo Fijo</th>
+            <th scope="col">Costo Variable</th>
+            <th scope="col">Punto de Equilibrio</th>
+            <th scope="col">Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr>            
+            <td>@barbijo.codArt</td>
+            <td>@barbijo.nombre</td>
+            <td>@barbijo.precioVenta</td>
+            <td>@barbijo.costoFijo</td>
+            <td>@barbijo.costoVariable</td>
+            <td>@barbijo.PuntoEquilibrio()</td>
+            <td>@((Estado)barbijo.CalculoEstado())</td>
+        </tr>
+
+    </tbody>
+</table>
